@@ -1,6 +1,6 @@
 <h1><%= @place["name"] %></h1>
 
-<p><a href="/places/<%= @place["id"] %>/entries/new">Add a new entry</a></p>
+<p><a href="/places">Back to All Places</a></p>
 
 <h2>Entries</h2>
 
@@ -14,4 +14,4 @@
   <% end %>
 </ul>
 
-<p><a href="/places">Back to All Places</a></p>
+<p><a href="/places/<%= @place["id"] %>/entries/new">Add a new entry</a></p>
