@@ -1,21 +1,22 @@
 class EntriesController < ApplicationController
   def new
-    @place = Place.find(params[:place_id])
-    @entry = Entry.new
+    @place = Place.find_by({ "id" => params["place_id"] })
+    # render entries/new view
   end
 
   def create
-    @place = Place.find(params[:place_id])
-    @entry = Entry.new
-    @entry.title = params[:title]
-    @entry.description = params[:description]
-    @entry.occurred_on = params[:occurred_on]
-    @entry.place_id = params[:place_id]
-
+    @place = Place.find_by({ "id" => params["place_id"] })
+    @entry = Entry.new(entry_params)
     if @entry.save
-      redirect_to place_path(@place)
+      redirect_to "/places/#{@place["id"]}"
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def entry_params
+    params.permit(:title, :description, :occurred_on, :place_id)
   end
 end

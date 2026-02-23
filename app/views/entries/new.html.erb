@@ -1,7 +1,7 @@
-<h1>New Entry for <%= @place.name %></h1>
+<h1>New Entry for <%= @place["name"] %></h1>
 
-<%= form_with url: place_entries_path(@place), method: :post do %>
-  <input type="hidden" name="place_id" value="<%= @place.id %>">
+<form action="/places/<%= @place["id"] %>/entries" method="post">
+  <input type="hidden" name="place_id" value="<%= @place["id"] %>">
 
   <p>
     <label for="title">Title</label><br>
@@ -19,6 +19,6 @@
   </p>
 
   <p><button type="submit">Create entry</button></p>
-<% end %>
+</form>
 
-<p><%= link_to "Back to place", place_path(@place) %></p>
+<p><a href="/places/<%= @place["id"] %>">Back to place</a></p>
