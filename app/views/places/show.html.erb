@@ -1,0 +1,17 @@
+<h1><%= @place.name %></h1>
+
+<p><%= link_to "Back to places", places_path %></p>
+
+<p><%= link_to "Add a new entry", new_place_entry_path(@place) %></p>
+
+<h2>Entries</h2>
+
+<ul>
+  <% @entries.each do |entry| %>
+    <li>
+      <strong><%= entry.title %></strong>
+      <div><%= entry.occurred_on %></div>
+      <div><%= entry.description %></div>
+    </li>
+  <% end %>
+</ul>
